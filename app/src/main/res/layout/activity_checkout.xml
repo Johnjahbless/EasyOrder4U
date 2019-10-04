@@ -1,0 +1,325 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".CheckoutActivity">
+
+    <androidx.cardview.widget.CardView
+        app:cardElevation="6dp"
+        android:layout_marginBottom="5dp"
+        android:id="@+id/cardView2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+<RelativeLayout
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+    <TextView
+        android:layout_margin="16dp"
+        android:id="@+id/text"
+        android:fontFamily="@font/opensans_semibold"
+        android:textSize="20sp"
+        android:textColor="@color/textColor"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Checkout" />
+        <ImageView
+            android:layout_alignParentEnd="true"
+            android:background="@drawable/select"
+            android:onClick="cancel"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/ic_close"
+            android:layout_marginTop="16dp"
+            android:layout_gravity="end"
+            android:layout_marginEnd="16dp"/>
+</RelativeLayout>
+    </androidx.cardview.widget.CardView>
+
+<ScrollView
+    android:layout_below="@id/cardView2"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+<LinearLayout
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+<RelativeLayout
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+<TextView
+    android:layout_marginStart="16dp"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:text="Shipping Address"
+    android:textAllCaps="true"/>
+<ImageView
+    android:onClick="editAddress"
+    android:paddingStart="16dp"
+    android:paddingEnd="16dp"
+    android:layout_alignParentEnd="true"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:src="@drawable/ic_border_color"/>
+</RelativeLayout>
+    <TextView
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="5dp"
+        android:fontFamily="@font/opensans_semibold"
+        android:textSize="20sp"
+        android:textColor="@color/textColor"
+        android:id="@+id/name2"
+        android:maxLines="1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Charles Odili"/>
+    <TextView
+        android:layout_marginStart="16dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Bosso, Minna"
+        android:textAllCaps="true"/>
+
+    <TextView
+        android:layout_marginTop="16dp"
+        android:layout_marginStart="16dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Payment Method"
+        android:textAllCaps="true"/>
+
+    <RadioGroup
+        android:layout_marginStart="16dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <RadioButton
+            android:checked="true"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Pay on delivery"
+            android:id="@+id/delivery"/>
+
+        <RadioButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Pay via card"
+            android:id="@+id/card"/>
+    </RadioGroup>
+    <TextView
+        android:layout_marginTop="16dp"
+        android:layout_marginStart="16dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="items"
+        android:textAllCaps="true"/>
+    <RelativeLayout
+        android:layout_below="@id/text"
+        android:layout_width="match_parent"
+        android:layout_height="150dp">
+
+    <androidx.cardview.widget.CardView
+        android:theme="@style/CardView.Light"
+        app:cardCornerRadius="10dp"
+        android:id="@+id/cardView"
+        app:cardUseCompatPadding="true"
+        android:layout_width="150dp"
+        android:layout_height="150dp">
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+
+            <ImageView
+                android:id="@+id/image"
+                android:src="@drawable/food"
+                android:layout_width="180dp"
+                android:layout_height="match_parent"
+                android:scaleType="fitXY" />
+        </RelativeLayout>
+    </androidx.cardview.widget.CardView>
+
+    <LinearLayout
+        android:layout_toEndOf="@id/cardView"
+        android:layout_marginTop="5dp"
+        android:orientation="vertical"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+        <TextView
+            android:layout_marginStart="5dp"
+            android:maxLines="1"
+            android:fontFamily="@font/open_sans_regular"
+            android:textSize="16sp"
+            android:textColor="@color/textColor"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Fried rice" />
+        <TextView
+            android:layout_marginStart="5dp"
+            android:maxLines="1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Happi foodie restaurant"/>
+
+        <RelativeLayout
+            android:layout_marginStart="5dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:maxLines="1"
+                android:id="@+id/nu"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="4.0 "/>
+            <TextView
+                android:maxLines="1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="(25 reviews)"
+                android:layout_toEndOf="@id/nu"/>
+        </RelativeLayout>
+        <RelativeLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:layout_marginStart="5dp"
+                android:maxLines="1"
+                android:id="@+id/num77"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="1 pieces"/>
+            <TextView
+                android:textColor="@color/colorPrimary"
+                android:maxLines="1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="5dp"
+                android:text="₦55"
+                android:layout_toEndOf="@id/num77"/>
+
+            <ImageView
+                android:padding="5dp"
+                android:layout_marginEnd="5dp"
+                android:layout_marginBottom="5dp"
+                android:background="@drawable/select"
+                android:layout_alignParentEnd="true"
+                android:layout_alignParentBottom="true"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/ic_delete"/>
+
+
+            <LinearLayout
+                android:layout_alignParentBottom="true"
+                android:orientation="horizontal"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
+                <ImageView
+                    android:padding="5dp"
+                    android:background="@drawable/select"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/ic_remove"/>
+                <TextView
+                    android:padding="5dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="1"
+                    android:textColor="@color/textColor"
+                    android:fontFamily="@font/opensans_semibold"/>
+                <ImageView
+                    android:padding="5dp"
+                    android:background="@drawable/select"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/ic_add"/>
+            </LinearLayout>
+        </RelativeLayout>
+    </LinearLayout>
+    </RelativeLayout>
+
+
+    <androidx.cardview.widget.CardView
+        app:cardElevation="6dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+<ImageView
+    android:layout_marginStart="16dp"
+    android:layout_marginTop="38dp"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:src="@drawable/ic_style_"
+    android:id="@+id/image5"/>
+        <com.google.android.material.textfield.TextInputLayout
+            android:layout_width="match_parent"
+            android:id="@+id/inputLayout"
+            android:layout_margin="16dp"
+            android:layout_toEndOf="@+id/image5"
+            android:layout_height="wrap_content">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:layout_width="match_parent"
+                android:hint="Add a Promo Code"
+                android:focusable="auto"
+                android:maxLines="1"
+                android:layout_height="wrap_content" />
+
+
+        </com.google.android.material.textfield.TextInputLayout>
+            <RelativeLayout
+                android:layout_below="@+id/inputLayout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+
+            <TextView
+                android:id="@+id/total_text"
+                android:layout_marginTop="16dp"
+                android:layout_marginStart="16dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Total"
+                android:textAllCaps="true"/>
+                <TextView
+                    android:textSize="20sp"
+                    android:layout_marginStart="16dp"
+                    android:layout_below="@+id/total_text"
+                    android:textColor="@color/colorPrimary"
+                    android:maxLines="1"
+                    android:id="@+id/total"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/opensans_semibold"
+                    android:text="₦55.00"/>
+                <TextView
+                    android:layout_marginBottom="16dp"
+                    android:layout_below="@+id/total"
+                    android:layout_marginTop="5dp"
+                    android:layout_marginStart="16dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Delivery charges included"
+                    android:textAllCaps="false"/>
+                <Button
+                    android:layout_marginTop="16dp"
+                    android:layout_marginEnd="16dp"
+                    android:layout_alignParentEnd="true"
+                    android:id="@+id/checkout"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="place order"
+                    android:textColor="#fff"
+                    android:textAllCaps="true"
+                    android:background="@drawable/button"/>
+            </RelativeLayout>
+        </RelativeLayout>
+    </androidx.cardview.widget.CardView>
+</LinearLayout>
+
+</ScrollView>
+</RelativeLayout>

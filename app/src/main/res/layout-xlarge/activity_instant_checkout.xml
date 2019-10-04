@@ -1,0 +1,302 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".InstantCheckoutActivity">
+
+    <androidx.cardview.widget.CardView
+        app:cardElevation="6dp"
+        android:layout_marginBottom="5dp"
+        android:id="@+id/cardView2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <TextView
+                android:layout_marginTop="5dp"
+                android:padding="16dp"
+                android:id="@+id/text"
+                android:fontFamily="@font/opensans_semibold"
+                android:textSize="35sp"
+                android:textColor="@color/textColor"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Checkout" />
+            <ImageView
+                android:padding="26dp"
+                android:layout_alignParentEnd="true"
+                android:background="@drawable/select"
+                android:onClick="cancel"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/ic_close"
+                android:layout_marginTop="16dp"
+                android:layout_gravity="end"
+                android:layout_marginEnd="16dp"/>
+        </RelativeLayout>
+    </androidx.cardview.widget.CardView>
+
+    <ScrollView
+        android:layout_below="@id/cardView2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+                <TextView
+                    android:textSize="35sp"
+                    android:layout_marginStart="16dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Shipping Address"
+                    android:textAllCaps="true"/>
+                <ImageView
+                    android:onClick="editAddress"
+                    android:paddingStart="26dp"
+                    android:paddingEnd="26dp"
+                    android:layout_alignParentEnd="true"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/ic_border_color"/>
+            </RelativeLayout>
+            <TextView
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="5dp"
+                android:fontFamily="@font/opensans_semibold"
+                android:textSize="35sp"
+                android:textColor="@color/textColor"
+                android:id="@+id/username"
+                android:maxLines="1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text=" "/>
+            <TextView
+                android:textSize="30sp"
+                android:id="@+id/useraddress"
+                android:layout_marginStart="16dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text=" "
+                android:textAllCaps="true"/>
+
+            <TextView
+                android:textSize="35sp"
+                android:layout_marginTop="16dp"
+                android:layout_marginStart="16dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Payment Method"
+                android:textAllCaps="true"/>
+
+            <RadioGroup
+                android:layout_marginStart="16dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+                <RadioButton
+                    android:checked="true"
+                    android:textSize="35sp"
+                    android:onClick="Select_payment"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Pay on delivery"
+                    android:id="@+id/delivery"/>
+
+                <RadioButton
+                    android:textSize="35sp"
+                    android:onClick="Select_payment"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Pay via card"
+                    android:id="@+id/card"/>
+            </RadioGroup>
+            <TextView
+                android:textSize="35sp"
+                android:layout_marginTop="16dp"
+                android:layout_marginStart="16dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="items"
+                android:textAllCaps="true"/>
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="500dp">
+
+                <androidx.cardview.widget.CardView
+                    android:theme="@style/CardView.Light"
+                    app:cardCornerRadius="10dp"
+                    android:id="@+id/cardView"
+                    app:cardUseCompatPadding="true"
+                    android:layout_width="500dp"
+                    android:layout_height="500dp">
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent">
+
+
+                        <ImageView
+                            android:id="@+id/image"
+                            android:src="@drawable/food"
+                            android:layout_width="500dp"
+                            android:layout_height="match_parent"
+                            android:scaleType="fitXY" />
+                    </RelativeLayout>
+                </androidx.cardview.widget.CardView>
+
+                <LinearLayout
+                    android:layout_toEndOf="@id/cardView"
+                    android:layout_marginTop="5dp"
+                    android:orientation="vertical"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content">
+                    <TextView
+                        android:textSize="30sp"
+                        android:id="@+id/foodTags"
+                        android:layout_marginBottom="26dp"
+                        android:layout_marginStart="5dp"
+                        android:maxLines="1"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text=" hhuuigguuugguguuggu"/>
+                    <TextView
+                        android:id="@+id/foodName"
+                        android:layout_marginBottom="26dp"
+                        android:layout_marginStart="5dp"
+                        android:maxLines="2"
+                        android:fontFamily="@font/open_sans_regular"
+                        android:textSize="35sp"
+                        android:textColor="@color/textColor"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text=" jjhioihioihigugugui" />
+                    <TextView
+                        android:textSize="35sp"
+                        android:id="@+id/shopName"
+                        android:layout_marginBottom="26dp"
+                        android:layout_marginStart="5dp"
+                        android:maxLines="2"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="hhgfkyuyii667677ft "/>
+
+                    <RelativeLayout
+                        android:layout_marginBottom="26dp"
+                        android:layout_marginStart="5dp"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content">
+
+                        <TextView
+                            android:visibility="gone"
+                            android:maxLines="1"
+                            android:id="@+id/num"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="4.0 "/>
+                        <TextView
+                            android:textSize="30sp"
+                            android:id="@+id/reviews"
+                            android:maxLines="1"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text=" jbhlhii"
+                            android:layout_toEndOf="@id/num"/>
+                    </RelativeLayout>
+                    <RelativeLayout
+                        android:layout_marginBottom="26dp"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content">
+
+                        <TextView
+                            android:textSize="30sp"
+                            android:layout_marginStart="5dp"
+                            android:maxLines="1"
+                            android:id="@+id/pieces"
+                            android:layout_marginBottom="16dp"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text=" fgrgreerg"/>
+                        <TextView
+                            android:textSize="35sp"
+                            android:textColor="@color/colorPrimary"
+                            android:maxLines="1"
+                            android:id="@+id/price"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="5dp"
+                            android:text="hjhvjvhvhvhl "
+                            android:layout_below="@id/pieces"/>
+
+
+                    </RelativeLayout>
+                </LinearLayout>
+            </RelativeLayout>
+
+
+
+        </LinearLayout>
+
+    </ScrollView>
+
+    <androidx.cardview.widget.CardView
+        app:cardElevation="6dp"
+        android:layout_alignParentBottom="true"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+
+            <TextView
+                android:textSize="35sp"
+                android:id="@+id/total_text"
+                android:layout_marginTop="16dp"
+                android:layout_marginStart="16dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Total"
+                android:textAllCaps="true"/>
+            <TextView
+                android:textSize="35sp"
+                android:layout_marginStart="16dp"
+                android:layout_below="@+id/total_text"
+                android:textColor="@color/colorPrimary"
+                android:maxLines="1"
+                android:id="@+id/total"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/opensans_semibold"
+                android:text="₦55.00"/>
+            <TextView
+                android:textSize="30sp"
+                android:layout_marginBottom="16dp"
+                android:layout_below="@+id/total"
+                android:layout_marginTop="5dp"
+                android:layout_marginStart="16dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Delivery charges not included"
+                android:textAllCaps="false"/>
+            <Button
+                android:textSize="35sp"
+                android:onClick="checkout"
+                android:layout_marginTop="16dp"
+                android:layout_marginEnd="16dp"
+                android:layout_alignParentEnd="true"
+                android:id="@+id/checkout"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="place order"
+                android:textColor="#fff"
+                android:textAllCaps="true"
+                android:background="@drawable/button"/>
+        </RelativeLayout>
+    </androidx.cardview.widget.CardView>
+</RelativeLayout>

@@ -1,0 +1,154 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ProfileActivity">
+
+    <RelativeLayout
+        android:id="@+id/layout"
+        android:background="@drawable/pro"
+        android:layout_width="match_parent"
+        android:layout_height="400dp">
+
+        <ImageView
+            android:background="@drawable/select"
+            android:onClick="back"
+            android:id="@+id/back"
+            android:layout_marginTop="16dp"
+            android:padding="16dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/ic_arrow_back"/>
+
+        <ImageView
+            android:background="@drawable/select"
+            android:layout_alignParentEnd="true"
+            android:onClick="chat"
+            android:layout_marginTop="16dp"
+            android:padding="16dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/ic_mode_edit_white"/>
+        <de.hdodenhof.circleimageview.CircleImageView
+            android:id="@+id/circleImageViewUserImage"
+            android:layout_below="@id/back"
+            android:layout_centerHorizontal="true"
+            app:civ_border_width="3dp"
+            android:layout_marginTop="40dp"
+            app:civ_border_color="#FFFFFF"
+            android:layout_width="200dp"
+            android:layout_height="230dp"
+            app:elevation="5dp"
+            android:scaleType="centerCrop"
+            android:src="@drawable/food"/>
+        <TextView
+            android:layout_centerHorizontal="true"
+            android:layout_below="@id/circleImageViewUserImage"
+            android:fontFamily="@font/opensans_semibold"
+            android:textSize="20sp"
+            android:textColor="@color/textColor"
+            android:id="@+id/name2"
+            android:maxLines="1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text=" "/>
+        <TextView
+            android:paddingBottom="10dp"
+            android:layout_below="@id/name2"
+            android:layout_centerHorizontal="true"
+            android:id="@+id/email"
+            android:maxLines="1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text=" " />
+
+    </RelativeLayout>
+    <ScrollView
+        android:layout_marginStart="16dp"
+        android:layout_below="@id/layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+
+        <LinearLayout
+            android:id="@+id/layout_about"
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:maxLines="1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="FullName" />
+
+            <TextView
+                android:layout_marginTop="5dp"
+                android:fontFamily="@font/opensans_semibold"
+                android:textSize="20sp"
+                android:textColor="@color/textColor"
+                android:id="@+id/name"
+                android:maxLines="1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text=" "/>
+            <TextView
+                android:layout_marginTop="20dp"
+                android:maxLines="1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Phone number" />
+
+            <TextView
+                android:layout_marginTop="5dp"
+                android:fontFamily="@font/opensans_semibold"
+                android:textSize="20sp"
+                android:textColor="@color/textColor"
+                android:id="@+id/phone"
+                android:maxLines="1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text=" "/>
+            <TextView
+                android:layout_marginTop="20dp"
+                android:maxLines="1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Home  address" />
+
+            <TextView
+                android:layout_marginTop="5dp"
+                android:fontFamily="@font/opensans_semibold"
+                android:textSize="20sp"
+                android:textColor="@color/textColor"
+                android:id="@+id/location"
+                android:maxLines="1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text=" "/>
+
+            <TextView
+                android:layout_marginTop="20dp"
+                android:maxLines="1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Gender" />
+
+            <TextView
+                android:layout_marginBottom="@dimen/activity_horizontal_margin"
+                android:layout_marginTop="5dp"
+                android:fontFamily="@font/opensans_semibold"
+                android:textSize="20sp"
+                android:textColor="@color/textColor"
+                android:id="@+id/gender"
+                android:maxLines="1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text=" "/>
+
+
+        </LinearLayout>
+    </ScrollView>
+</RelativeLayout>

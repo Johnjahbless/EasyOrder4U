@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+    <RelativeLayout
+        android:layout_margin="@dimen/activity_horizontal_margin"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/ic_close"
+            android:padding="16dp"
+            android:layout_alignParentEnd="true"
+            android:id="@+id/close"/>
+        <TextView
+            android:id="@+id/textview"
+            android:layout_width="match_parent"
+            android:textColor="@color/textColor"
+            android:textSize="20sp"
+            android:layout_height="wrap_content"
+            android:text="Enter Delivery Address"/>
+        <TextView
+            android:layout_below="@id/textview"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Please be concise"/>
+        <com.google.android.material.textfield.TextInputLayout
+            android:layout_width="match_parent"
+            android:layout_below="@id/close"
+            android:id="@+id/this_layout"
+            android:layout_height="wrap_content">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:layout_width="match_parent"
+                android:hint="Enter address"
+                android:inputType="textMultiLine"
+                android:id="@+id/address"
+                android:layout_height="wrap_content" />
+
+
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <Button
+            android:layout_alignParentEnd="true"
+            android:layout_marginTop="5dp"
+            android:id="@+id/copyAddress"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/this_layout"
+            android:text="Continue"
+            android:textColor="#fff"
+            android:textAllCaps="false"
+            android:background="@drawable/button"/>
+
+    </RelativeLayout>
+</LinearLayout>

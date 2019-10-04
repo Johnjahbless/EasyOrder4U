@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context=".fragments.FavouriteFragment">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <TextView
+                android:layout_margin="16dp"
+                android:id="@+id/text"
+                android:fontFamily="@font/opensans_semibold"
+                android:textSize="35sp"
+                android:textColor="@color/textColor"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="My Favourite Items" />
+           <androidx.recyclerview.widget.RecyclerView
+               android:layout_width="match_parent"
+               android:id="@+id/favouriteRecycler"
+               android:layout_height="wrap_content"/>
+        </LinearLayout>
+    </RelativeLayout>
+
+
+</ScrollView>

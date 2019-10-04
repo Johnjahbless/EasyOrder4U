@@ -1,0 +1,145 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_height="match_parent"
+    tools:context=".fragments.CartFragment">
+
+    <TextView
+        android:layout_margin="16dp"
+        android:id="@+id/text"
+        android:fontFamily="@font/opensans_semibold"
+        android:textSize="35sp"
+        android:textColor="@color/textColor"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="My Cart" />
+
+    <RelativeLayout
+        android:id="@+id/layout"
+        android:visibility="visible"
+        android:layout_below="@id/text"
+        android:layout_width="match_parent"
+        android:layout_height="400dp">
+
+        <androidx.cardview.widget.CardView
+            android:theme="@style/CardView.Light"
+            app:cardCornerRadius="10dp"
+            android:id="@+id/cardView"
+            app:cardUseCompatPadding="true"
+            android:layout_width="400dp"
+            android:layout_height="400dp">
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+
+                <ImageView
+                    android:id="@+id/image"
+                    android:src="@drawable/food"
+                    android:layout_width="400dp"
+                    android:layout_height="match_parent"
+                    android:scaleType="fitXY" />
+            </RelativeLayout>
+        </androidx.cardview.widget.CardView>
+
+        <LinearLayout
+            android:layout_toEndOf="@id/cardView"
+            android:layout_marginTop="5dp"
+            android:orientation="vertical"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+            <TextView
+                android:textSize="35sp"
+                android:id="@+id/foodTags"
+                android:layout_marginBottom="4dp"
+                android:layout_marginStart="5dp"
+                android:maxLines="1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text=" "/>
+            <TextView
+                android:id="@+id/foodName"
+                android:layout_marginBottom="4dp"
+                android:layout_marginStart="5dp"
+                android:maxLines="1"
+                android:fontFamily="@font/open_sans_regular"
+                android:textSize="35sp"
+                android:textColor="@color/textColor"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text=" " />
+            <TextView
+                android:textSize="35sp"
+                android:id="@+id/shopName"
+                android:layout_marginBottom="4dp"
+                android:layout_marginStart="5dp"
+                android:maxLines="1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text=" "/>
+
+            <RelativeLayout
+                android:layout_marginBottom="4dp"
+                android:layout_marginStart="5dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
+
+                <TextView
+                    android:visibility="gone"
+                    android:maxLines="1"
+                    android:id="@+id/num"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="4.0 "/>
+                <TextView
+                    android:textSize="30sp"
+                    android:id="@+id/reviews"
+                    android:maxLines="1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text=" "
+                    android:layout_toEndOf="@id/num"/>
+            </RelativeLayout>
+            <RelativeLayout
+                android:layout_marginBottom="4dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
+
+                <TextView
+                    android:textSize="30sp"
+                    android:layout_marginStart="5dp"
+                    android:maxLines="1"
+                    android:id="@+id/pieces"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="1 pieces"/>
+                <TextView
+                    android:textSize="35sp"
+                    android:textColor="@color/colorPrimary"
+                    android:maxLines="1"
+                    android:id="@+id/total"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="5dp"
+                    android:text=" "
+                    android:layout_below="@id/pieces"/>
+
+
+            </RelativeLayout>
+        </LinearLayout>
+    </RelativeLayout>
+<Button
+    android:visibility="gone"
+    android:layout_margin="@dimen/activity_horizontal_margin"
+    android:textSize="35sp"
+    android:id="@+id/checkout"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_alignParentBottom="true"
+    android:text="proceed to checkout"
+    android:textColor="#fff"
+    android:textAllCaps="true"
+    android:background="@drawable/button"/>
+</RelativeLayout>

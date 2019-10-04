@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".LocationActivity">
+    <FrameLayout
+        android:layout_marginTop="36dp"
+        android:layout_marginStart="@dimen/activity_horizontal_margin"
+        android:layout_marginEnd="@dimen/activity_horizontal_margin"
+        android:elevation="10dp"
+        android:layout_width="match_parent"
+        android:background="#fff"
+        android:layout_height="wrap_content">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <EditText
+                android:editable="false"
+                android:inputType="none"
+                android:background="#fff"
+                android:drawablePadding="@dimen/activity_horizontal_margin"
+                android:id="@+id/myLocation"
+                android:drawableStart="@drawable/ic_fiber_"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/activity_horizontal_margin"
+                android:hint="Your location"
+                android:textColor="@color/textColor"/>
+        </RelativeLayout>
+    </FrameLayout>
+    <fragment
+        android:name="com.google.android.gms.maps.MapFragment"
+        android:id="@+id/mapView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
+</RelativeLayout>
