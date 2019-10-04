@@ -50,7 +50,7 @@ public class InstantCheckoutActivity extends AppCompatActivity {
 TextView etUsername, etAddress, etFoodTags, etFoodName, etShopName, etLikes, etReviews, etPrice, etPieces, etTotal;
 String username, userAddress, paymentMethod = "pay on delivery", foodName, shopName,  review, foodPrice,foodPhoto, foodId, foodTags, foodDesc,
     shopCity, shopState, shopAddress, shopID, userID, userId, useremail, userPhoto, orderId, orderId2, userPhone, userGender, userHome, newAddress,
-    mon, tue, wed, thu, fri, sat, sun;
+    mon, tue, wed, thu, fri, sat, sun, shopOrder, order = "YES";
 Integer value = 2, valueTime;
 Double likes, totalPrice, pieces;
 ImageView imageView;
@@ -93,6 +93,7 @@ ImageView imageView;
         user = FirebaseAuth.getInstance().getCurrentUser();
         userId = user.getUid();
         getUser();
+        //getConstants();
         Calendar calendar = Calendar.getInstance();
         Date date = calendar.getTime();
        today= (new SimpleDateFormat("EE", Locale.ENGLISH).format(date.getTime()));
@@ -253,6 +254,14 @@ ImageView imageView;
     }
 
     private boolean validates() {
+        if (!order.equals("YES")){
+            Toast.makeText(this, "Sorry, you have been banned from making orders due to policy violation", Toast.LENGTH_LONG).show();
+            return false;
+        }
+        if (!shopOrder.equals("YES")) {
+            Toast.makeText(this, "Sorry, this shop does not accept orders", Toast.LENGTH_SHORT).show();
+            return false;
+        }
         if (valueTime == 0) {
             Toast.makeText(this, "Sorry, You can not make an order at this time", Toast.LENGTH_LONG).show();
             return false;
@@ -587,6 +596,7 @@ orderId2 = documentReference.getId();
                                                                                                             userGender = doc.getString("Gender");
                                                                                                             userHome = doc.getString("HomeAddress");
                                                                                                             newAddress = doc.getString("HomeAddress");
+                                                                                                            order = doc.getString("CanOrder");
                                                                                                             etAddress.setText(userHome);
                                                                                                             etUsername.setText(username);
                                                                                                         }else {
@@ -651,6 +661,7 @@ orderId2 = documentReference.getId();
                                                           fri = doc.getString("Friday");
                                                           sat = doc.getString("Saturday");
                                                           sun = doc.getString("Sunday");
+                                                          shopOrder = doc.getString("ShopOrder");
 
                                                       }
                                                   }
@@ -665,4 +676,6 @@ orderId2 = documentReference.getId();
                     }
                 });
     }
+
+
 }

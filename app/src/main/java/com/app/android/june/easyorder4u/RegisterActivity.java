@@ -147,6 +147,7 @@ public class RegisterActivity extends AppCompatActivity {
         newContact.put("HomeAddress", home);
         newContact.put("Created_date", formattedDate);
         newContact.put("Date", date);
+        newContact.put("CanOrder", "YES");
         newContact.put("Approved", "Yes");
         db.collection("Customers").document("users").collection("users").document(userId).set(newContact)
                 .addOnSuccessListener(new OnSuccessListener<Void>() {
