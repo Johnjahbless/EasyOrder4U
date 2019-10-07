@@ -43,7 +43,7 @@ public class MenuActivity extends AppCompatActivity {
     }
 
     public void like(View view) {
-        String facebookPageID = "happifoodie/";
+        String facebookPageID = "easyorder4u/";
         // URL
         String facebookUrl = "https://www.facebook.com/" + facebookPageID;
         startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse(facebookUrl)));
@@ -51,7 +51,7 @@ public class MenuActivity extends AppCompatActivity {
 
     public void rate(View view) {
         Intent intent = new Intent(Intent.ACTION_VIEW);
-        intent.setData(Uri.parse("market://details?id=com.app.android.june.happifoodie"));
+        intent.setData(Uri.parse("market://details?id=com.app.android.june.easyorder4u"));
         startActivity(intent);
     }
 
@@ -62,6 +62,9 @@ public class MenuActivity extends AppCompatActivity {
     }
 
     public void terms(View view) {
+        String url = "https://privacy-policys.firebaseapp.com/";
+        Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse(url));
+        startActivity(intent);
     }
 
     public void settings(View view) {

@@ -439,7 +439,13 @@ public class HfSubmitActivity extends AppCompatActivity {
         };
         MySingleton.getInstance(getApplicationContext()).addToRequestQueue(jsonObjectRequest);
     }
-
+    @Override
+    public void onBackPressed(){
+        super.onBackPressed();
+    }
+    public void cancel(View view) {
+        onBackPressed();
+    }
 }
 
 

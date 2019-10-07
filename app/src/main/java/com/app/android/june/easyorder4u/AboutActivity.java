@@ -32,7 +32,7 @@ public class AboutActivity extends AppCompatActivity {
         swipeRefreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
             @Override
             public void onRefresh() {
-                webview.loadUrl("https://happifoodi.com/about");
+                webview.loadUrl("https://easyorder4u.com");
 
             }
         });
@@ -48,7 +48,7 @@ public class AboutActivity extends AppCompatActivity {
 
 
         webview.setWebViewClient(new WebViewClient());
-        webview.loadUrl("https://www.happifoodi.com/about");
+        webview.loadUrl("https://easyorder4u.com");
     }
 
     public class WebViewClient extends

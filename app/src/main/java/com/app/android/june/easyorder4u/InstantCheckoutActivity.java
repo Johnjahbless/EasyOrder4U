@@ -97,7 +97,7 @@ ImageView imageView;
         Calendar calendar = Calendar.getInstance();
         Date date = calendar.getTime();
        today= (new SimpleDateFormat("EE", Locale.ENGLISH).format(date.getTime()));
-        Toast.makeText(this, ", " + today, Toast.LENGTH_SHORT).show();
+        //Toast.makeText(this, ", " + today, Toast.LENGTH_SHORT).show();
         getTimeOfday();
         if (getIntent().hasExtra("foodName")) {
             foodName = Objects.requireNonNull(getIntent().getExtras()).getString("foodName");
