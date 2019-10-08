@@ -246,6 +246,7 @@
                 <androidx.cardview.widget.CardView
                     android:layout_width="wrap_content"
                     app:cardCornerRadius="6dp"
+                    android:id="@+id/shoesCard"
                     android:layout_marginEnd="8dp"
                     android:background="@drawable/select"
                     android:layout_height="wrap_content">
@@ -334,6 +335,7 @@
                 <androidx.cardview.widget.CardView
                     android:layout_width="wrap_content"
                     app:cardCornerRadius="6dp"
+                    android:id="@+id/clothsCard"
                     android:layout_marginEnd="8dp"
                     android:background="@drawable/select"
                     android:layout_height="wrap_content">
@@ -379,6 +381,7 @@
                 <androidx.cardview.widget.CardView
                     android:layout_width="wrap_content"
                     app:cardCornerRadius="6dp"
+                    android:id="@+id/pizza"
                     android:layout_marginEnd="8dp"
                     android:background="@drawable/select"
                     android:layout_height="wrap_content">
@@ -424,6 +427,7 @@
                 <androidx.cardview.widget.CardView
                     android:layout_width="wrap_content"
                     app:cardCornerRadius="6dp"
+                    android:id="@+id/beautyCard"
                     android:layout_marginEnd="8dp"
                     android:background="@drawable/select"
                     android:layout_height="wrap_content">
@@ -470,6 +474,7 @@
                     android:layout_width="wrap_content"
                     app:cardCornerRadius="6dp"
                     android:layout_marginEnd="8dp"
+                    android:id="@+id/othersCard"
                     android:background="@drawable/select"
                     android:layout_height="wrap_content">
                     <RelativeLayout

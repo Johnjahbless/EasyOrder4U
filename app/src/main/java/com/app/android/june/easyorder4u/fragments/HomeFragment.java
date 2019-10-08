@@ -105,7 +105,7 @@ public class HomeFragment extends Fragment {
         othersText = rootView.findViewById(R.id.others);
         CardView othersCard = rootView.findViewById(R.id.othersCard);
         CardView beautyCard = rootView.findViewById(R.id.beautyCard);
-        CardView pizza = rootView.findViewById(R.id.pizza);
+        CardView pizzaCard = rootView.findViewById(R.id.pizza);
         CardView clothsCard = rootView.findViewById(R.id.clothsCard);
         CardView shoesCard = rootView.findViewById(R.id.shoesCard);
         db = FirebaseFirestore.getInstance();
@@ -149,7 +149,7 @@ public class HomeFragment extends Fragment {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(getContext(), ViewAllActivity.class);
-                intent.putExtra("name", "sponsord");
+                intent.putExtra("sponsord", "sponsord");
                 startActivity(intent);
             }
         });
@@ -178,7 +178,7 @@ public class HomeFragment extends Fragment {
                 startActivity(intent);
             }
         });
-        pizza.setOnClickListener(new View.OnClickListener() {
+        pizzaCard.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(getContext(), ViewAllActivity.class);
@@ -198,7 +198,7 @@ public class HomeFragment extends Fragment {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(getContext(), ViewAllActivity.class);
-                intent.putExtra("name", "others");
+                intent.putExtra("others", "others");
                 startActivity(intent);
             }
         });
@@ -206,7 +206,7 @@ public class HomeFragment extends Fragment {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(getContext(), ViewAllActivity.class);
-                intent.putExtra("name", "others");
+                intent.putExtra("others", "others");
                 startActivity(intent);
             }
         });
@@ -214,7 +214,7 @@ public class HomeFragment extends Fragment {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(getContext(), ViewAllActivity.class);
-                intent.putExtra("name", "others");
+                intent.putExtra("others", "others");
                 startActivity(intent);
             }
         });
@@ -222,7 +222,7 @@ public class HomeFragment extends Fragment {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(getContext(), ViewAllActivity.class);
-                intent.putExtra("name", "others");
+                intent.putExtra("others", "others");
                 startActivity(intent);
             }
         });
