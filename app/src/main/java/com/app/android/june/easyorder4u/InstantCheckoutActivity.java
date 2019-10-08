@@ -49,8 +49,8 @@ import java.util.Objects;
 public class InstantCheckoutActivity extends AppCompatActivity {
 TextView etUsername, etAddress, etFoodTags, etFoodName, etShopName, etLikes, etReviews, etPrice, etPieces, etTotal;
 String username, userAddress, paymentMethod = "pay on delivery", foodName, shopName,  review, foodPrice,foodPhoto, foodId, foodTags, foodDesc,
-    shopCity, shopState, shopAddress, shopID, userID, userId, useremail, userPhoto, orderId, orderId2, userPhone, userGender, userHome, newAddress,
-    mon, tue, wed, thu, fri, sat, sun, shopOrder, order = "YES";
+    shopCity, shopState, locationOrder, shopAddress, shopID, userID, userId, useremail, userPhoto, orderId, orderId2, userPhone, userGender, userHome, newAddress,
+    mon, tue, wed, thu, fri, sat, sun, shopOrder, order = "YES", lga;
 Integer value = 2, valueTime;
 Double likes, totalPrice, pieces;
 ImageView imageView;
@@ -254,6 +254,10 @@ ImageView imageView;
     }
 
     private boolean validates() {
+        if (!locationOrder.contains(lga)) {
+            Toast.makeText(this, "Sorry, this shop does not deliver to your location", Toast.LENGTH_SHORT).show();
+            return false;
+        }
         if (!order.equals("YES")){
             Toast.makeText(this, "Sorry, you have been banned from making orders due to policy violation", Toast.LENGTH_LONG).show();
             return false;
@@ -575,6 +579,7 @@ orderId2 = documentReference.getId();
                                                           userGender = doc.getString("Gender");
                                                           userHome = doc.getString("HomeAddress");
                                                           newAddress = doc.getString("HomeAddress");
+                                                          lga = doc.getString("HomeAddress");
                                                           etAddress.setText(userHome);
                                                           etUsername.setText(username);
 
@@ -597,6 +602,7 @@ orderId2 = documentReference.getId();
                                                                                                             userHome = doc.getString("HomeAddress");
                                                                                                             newAddress = doc.getString("HomeAddress");
                                                                                                             order = doc.getString("CanOrder");
+                                                                                                            lga = doc.getString("Lga");
                                                                                                             etAddress.setText(userHome);
                                                                                                             etUsername.setText(username);
                                                                                                         }else {
@@ -662,6 +668,7 @@ orderId2 = documentReference.getId();
                                                           sat = doc.getString("Saturday");
                                                           sun = doc.getString("Sunday");
                                                           shopOrder = doc.getString("ShopOrder");
+                                                          locationOrder =  doc.getString("ShopCoverage");
 
                                                       }
                                                   }

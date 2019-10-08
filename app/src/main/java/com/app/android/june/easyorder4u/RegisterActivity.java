@@ -250,9 +250,15 @@ public class RegisterActivity extends AppCompatActivity {
 
     }
     public void privacy(View view) {
+        String url = "https://privacy-policys.firebaseapp.com/";
+        Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse(url));
+        startActivity(intent);
     }
 
     public void terms(View view) {
+        String url = "https://privacy-policys.firebaseapp.com/";
+        Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse(url));
+        startActivity(intent);
     }
 
     public void Select_gender(View view) {

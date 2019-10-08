@@ -86,7 +86,7 @@
             android:textColor="@color/textColor"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Food Categories" />
+            android:text="Item Categories" />
 <HorizontalScrollView
     android:layout_marginStart="16dp"
     android:layout_marginEnd="16dp"
@@ -134,6 +134,7 @@
         android:text="Breakfast" />
 
         <TextView
+            android:id="@+id/breakText"
             android:layout_marginBottom="5dp"
             android:layout_marginStart="5dp"
             android:layout_toEndOf="@id/image"
@@ -181,6 +182,7 @@
                     android:text="Lunch" />
 
                 <TextView
+                    android:id="@+id/lunchText"
                     android:layout_marginBottom="5dp"
                     android:layout_marginStart="5dp"
                     android:layout_toEndOf="@id/image3"
@@ -227,6 +229,7 @@
                     android:text="Dinner" />
 
                 <TextView
+                    android:id="@+id/dinnerText"
                     android:layout_marginBottom="5dp"
                     android:layout_marginStart="5dp"
                     android:layout_toEndOf="@id/image4"
@@ -234,6 +237,53 @@
                     android:layout_height="wrap_content"
                     android:layout_below="@id/text5"
                     android:text="8 items"/>
+
+
+            </RelativeLayout>
+
+        </androidx.cardview.widget.CardView>
+
+        <androidx.cardview.widget.CardView
+            android:layout_width="wrap_content"
+            app:cardCornerRadius="6dp"
+            android:layout_marginEnd="8dp"
+            android:id="@+id/shoesCard"
+            android:background="@drawable/select"
+            android:layout_height="wrap_content">
+            <RelativeLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
+                <ImageView
+                    android:layout_marginStart="5dp"
+                    android:layout_centerVertical="true"
+                    android:layout_alignParentStart="true"
+                    android:id="@+id/image50"
+                    android:layout_width="24dp"
+                    android:layout_height="24dp"
+                    android:src="@drawable/shoes"/>
+
+                <TextView
+                    android:layout_marginTop="5dp"
+                    android:layout_marginStart="5dp"
+                    android:layout_marginEnd="5dp"
+                    android:id="@+id/text00"
+                    android:layout_toEndOf="@id/image50"
+                    android:fontFamily="@font/open_sans_regular"
+                    android:textSize="15sp"
+                    android:textColor="@color/textColor"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Shoes" />
+
+                <TextView
+                    android:id="@+id/shoes"
+                    android:layout_marginBottom="5dp"
+                    android:layout_marginStart="5dp"
+                    android:layout_toEndOf="@id/image50"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/text00"
+                    android:text="0 items"/>
 
 
             </RelativeLayout>
@@ -271,6 +321,7 @@
                     android:text="Drinks" />
 
                 <TextView
+                    android:id="@+id/drinksText"
                     android:layout_marginBottom="5dp"
                     android:layout_marginStart="5dp"
                     android:layout_toEndOf="@id/image7"
@@ -281,11 +332,57 @@
             </RelativeLayout>
 
         </androidx.cardview.widget.CardView>
-
         <androidx.cardview.widget.CardView
             android:layout_width="wrap_content"
             app:cardCornerRadius="6dp"
             android:layout_marginEnd="8dp"
+            android:id="@+id/clothsCard"
+            android:background="@drawable/select"
+            android:layout_height="wrap_content">
+            <RelativeLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
+                <ImageView
+                    android:layout_marginStart="5dp"
+                    android:layout_centerVertical="true"
+                    android:layout_alignParentStart="true"
+                    android:id="@+id/image500"
+                    android:layout_width="24dp"
+                    android:layout_height="24dp"
+                    android:src="@drawable/cloth"/>
+
+                <TextView
+                    android:layout_marginTop="5dp"
+                    android:layout_marginStart="5dp"
+                    android:layout_marginEnd="5dp"
+                    android:id="@+id/text000"
+                    android:layout_toEndOf="@id/image500"
+                    android:fontFamily="@font/open_sans_regular"
+                    android:textSize="15sp"
+                    android:textColor="@color/textColor"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Cloths" />
+
+                <TextView
+                    android:id="@+id/cloths"
+                    android:layout_marginBottom="5dp"
+                    android:layout_marginStart="5dp"
+                    android:layout_toEndOf="@id/image500"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/text000"
+                    android:text="0 items"/>
+
+
+            </RelativeLayout>
+
+        </androidx.cardview.widget.CardView>
+        <androidx.cardview.widget.CardView
+            android:layout_width="wrap_content"
+            app:cardCornerRadius="6dp"
+            android:layout_marginEnd="8dp"
+            android:id="@+id/pizza"
             android:background="@drawable/select"
             android:layout_height="wrap_content">
             <RelativeLayout
@@ -314,6 +411,7 @@
                     android:text="Pizza" />
 
                 <TextView
+                    android:id="@+id/pizzaText"
                     android:layout_marginBottom="5dp"
                     android:layout_marginStart="5dp"
                     android:layout_toEndOf="@id/image5"
@@ -321,6 +419,98 @@
                     android:layout_height="wrap_content"
                     android:layout_below="@id/text6"
                     android:text="8 items"/>
+
+
+            </RelativeLayout>
+
+        </androidx.cardview.widget.CardView>
+        <androidx.cardview.widget.CardView
+            android:layout_width="wrap_content"
+            app:cardCornerRadius="6dp"
+            android:layout_marginEnd="8dp"
+            android:id="@+id/beautyCard"
+            android:background="@drawable/select"
+            android:layout_height="wrap_content">
+            <RelativeLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
+                <ImageView
+                    android:layout_marginStart="5dp"
+                    android:layout_centerVertical="true"
+                    android:layout_alignParentStart="true"
+                    android:id="@+id/image5000"
+                    android:layout_width="24dp"
+                    android:layout_height="24dp"
+                    android:src="@drawable/beauty"/>
+
+                <TextView
+                    android:layout_marginTop="5dp"
+                    android:layout_marginStart="5dp"
+                    android:layout_marginEnd="5dp"
+                    android:id="@+id/text0000"
+                    android:layout_toEndOf="@id/image5000"
+                    android:fontFamily="@font/open_sans_regular"
+                    android:textSize="15sp"
+                    android:textColor="@color/textColor"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Beauty" />
+
+                <TextView
+                    android:id="@+id/beauty"
+                    android:layout_marginBottom="5dp"
+                    android:layout_marginStart="5dp"
+                    android:layout_toEndOf="@id/image5000"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/text0000"
+                    android:text="0 items"/>
+
+
+            </RelativeLayout>
+
+        </androidx.cardview.widget.CardView>
+        <androidx.cardview.widget.CardView
+            android:layout_width="wrap_content"
+            app:cardCornerRadius="6dp"
+            android:layout_marginEnd="8dp"
+            android:id="@+id/othersCard"
+            android:background="@drawable/select"
+            android:layout_height="wrap_content">
+            <RelativeLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
+                <ImageView
+                    android:layout_marginStart="5dp"
+                    android:layout_centerVertical="true"
+                    android:layout_alignParentStart="true"
+                    android:id="@+id/image50000"
+                    android:layout_width="24dp"
+                    android:layout_height="24dp"
+                    android:src="@drawable/ic_others"/>
+
+                <TextView
+                    android:layout_marginTop="5dp"
+                    android:layout_marginStart="5dp"
+                    android:layout_marginEnd="5dp"
+                    android:id="@+id/text00000"
+                    android:layout_toEndOf="@id/image50000"
+                    android:fontFamily="@font/open_sans_regular"
+                    android:textSize="15sp"
+                    android:textColor="@color/textColor"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Others" />
+
+                <TextView
+                    android:id="@+id/others"
+                    android:layout_marginBottom="5dp"
+                    android:layout_marginStart="5dp"
+                    android:layout_toEndOf="@id/image50000"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/text00000"
+                    android:text="0 items"/>
 
 
             </RelativeLayout>
@@ -339,7 +529,7 @@
         android:textColor="@color/textColor"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Our Popular Food" />
+        android:text="Our Popular Items" />
     <TextView
         android:background="@drawable/select"
         android:fontFamily="@font/opensans_semibold"

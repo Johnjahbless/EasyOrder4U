@@ -1,10 +1,12 @@
 package com.app.android.june.easyorder4u.fragments;
 
 
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.app.AlertDialog;
 import androidx.cardview.widget.CardView;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -18,6 +20,7 @@ import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.app.android.june.easyorder4u.MainActivity;
 import com.app.android.june.easyorder4u.R;
 import com.app.android.june.easyorder4u.ViewAllActivity;
 import com.app.android.june.easyorder4u.adapters.foodAdapter;
@@ -48,7 +51,7 @@ import java.util.List;
 public class HomeFragment extends Fragment {
 
     private View rootView;
-    private TextView dishes, popular, sponsord, recent, nearme;
+    private TextView dishes, popular, sponsord, recent, nearme, breakText, lunchText, dinnerText, drinksText, pizzaText, shoesText, clothsText, beautyText, othersText;
     private ImageView imageView;
     private CardView breakfast, lunch, dinner;
     private FirebaseFirestore db;
@@ -91,6 +94,20 @@ public class HomeFragment extends Fragment {
         friendList3 = rootView.findViewById(R.id.sponsord_recycler);
         friendList4 = rootView.findViewById(R.id.recent_recycler);
         friendList5 = rootView.findViewById(R.id.nearme_recycler);
+        breakText = rootView.findViewById(R.id.breakText);
+        lunchText = rootView.findViewById(R.id.lunchText);
+        dinnerText = rootView.findViewById(R.id.dinnerText);
+        pizzaText = rootView.findViewById(R.id.pizzaText);
+        drinksText = rootView.findViewById(R.id.drinksText);
+        shoesText = rootView.findViewById(R.id.shoes);
+        clothsText = rootView.findViewById(R.id.cloths);
+        beautyText = rootView.findViewById(R.id.beauty);
+        othersText = rootView.findViewById(R.id.others);
+        CardView othersCard = rootView.findViewById(R.id.othersCard);
+        CardView beautyCard = rootView.findViewById(R.id.beautyCard);
+        CardView pizza = rootView.findViewById(R.id.pizza);
+        CardView clothsCard = rootView.findViewById(R.id.clothsCard);
+        CardView shoesCard = rootView.findViewById(R.id.shoesCard);
         db = FirebaseFirestore.getInstance();
         user = FirebaseAuth.getInstance().getCurrentUser();
         userId = user.getUid();
@@ -106,9 +123,12 @@ public class HomeFragment extends Fragment {
         friendList5.setLayoutManager(new LinearLayoutManager(getContext(), LinearLayoutManager.HORIZONTAL, false));
         getUsers();
         getFoodItems2();
+        getFoodItems22();
         getFoodItems4();
 
         getFoodItems3();
+        getFoodItems33();
+        getTags();
         dishes.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -158,6 +178,14 @@ public class HomeFragment extends Fragment {
                 startActivity(intent);
             }
         });
+        pizza.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getContext(), ViewAllActivity.class);
+                intent.putExtra("name", "dinner");
+                startActivity(intent);
+            }
+        });
         dinner.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -166,7 +194,38 @@ public class HomeFragment extends Fragment {
                 startActivity(intent);
             }
         });
-
+        othersCard.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getContext(), ViewAllActivity.class);
+                intent.putExtra("name", "others");
+                startActivity(intent);
+            }
+        });
+        beautyCard.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getContext(), ViewAllActivity.class);
+                intent.putExtra("name", "others");
+                startActivity(intent);
+            }
+        });
+        clothsCard.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getContext(), ViewAllActivity.class);
+                intent.putExtra("name", "others");
+                startActivity(intent);
+            }
+        });
+        shoesCard.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getContext(), ViewAllActivity.class);
+                intent.putExtra("name", "others");
+                startActivity(intent);
+            }
+        });
         nearme.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -264,6 +323,48 @@ public class HomeFragment extends Fragment {
                     }
                 });
     }
+    private void getFoodItems22() {
+        db.collection("Vendors").document("services").collection("others").orderBy("ProductLikes", Query.Direction.DESCENDING)
+                .get()
+                .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
+                    @Override
+                    public void onComplete(@NonNull Task<QuerySnapshot> task) {
+                        if (task.isSuccessful()) {
+                            //List<viewItems> eventList = new ArrayList<>();
+                            //progressBar.setVisibility(View.GONE);
+                            for (DocumentSnapshot doc : task.getResult()) {
+                                Food e = doc.toObject(Food.class);
+
+                                e.setId(doc.getId());
+                                //eventList.clear();
+                                eventList2.add(e);
+                            }
+                            recyclerViewAdapter2 = new
+                                    popularAdapter(eventList2, getContext());
+                            friendList2.setAdapter(recyclerViewAdapter2);
+
+                        } else {
+                            //Log.d(TAG, "Error getting documents: ", task.getException());
+                            Toast.makeText(getContext(), "error: " + task.getException(), Toast.LENGTH_LONG).show();
+                            //progressBar.setVisibility(View.GONE);
+                        }
+                    }
+                });
+
+        db.collection("Vendors").document("services").collection("others").orderBy("ProductLikes", Query.Direction.DESCENDING)
+                .addSnapshotListener(new EventListener<QuerySnapshot>() {
+                    @Override
+                    public void onEvent(QuerySnapshot documentSnapshots, FirebaseFirestoreException e) {
+                        //List<viewItems> eventList = new ArrayList<>();
+                        for (DocumentChange doc : documentSnapshots.getDocumentChanges()) {
+                            doc.getDocument().toObject(Food.class);
+                            // eventList.add(ee);
+                            // recyclerViewAdapter.notifyDataSetChanged();
+                            //do something...
+                        }
+                    }
+                });
+    }
 
     private void getFoodItems3() {
         db.collection("Vendors").document("services").collection("services").whereEqualTo("Sponsord", 1)
@@ -294,6 +395,51 @@ public class HomeFragment extends Fragment {
                 });
 
         db.collection("Vendors").document("services").collection("services").whereEqualTo("Sponsord", 1)
+                .addSnapshotListener(new EventListener<QuerySnapshot>() {
+                    @Override
+                    public void onEvent(QuerySnapshot documentSnapshots, FirebaseFirestoreException e) {
+                        //List<viewItems> eventList = new ArrayList<>();
+                        for (DocumentChange doc : documentSnapshots.getDocumentChanges()) {
+                            doc.getDocument().toObject(Food.class);
+                            // eventList.add(ee);
+                            // recyclerViewAdapter.notifyDataSetChanged();
+                            //do something...
+                        }
+                    }
+                });
+
+
+    }
+
+    private void getFoodItems33() {
+        db.collection("Vendors").document("services").collection("others").whereEqualTo("Sponsord", 1)
+                .get()
+                .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
+                    @Override
+                    public void onComplete(@NonNull Task<QuerySnapshot> task) {
+                        if (task.isSuccessful()) {
+                            //List<viewItems> eventList = new ArrayList<>();
+                            //progressBar.setVisibility(View.GONE);
+                            for (DocumentSnapshot doc : task.getResult()) {
+                                Food e = doc.toObject(Food.class);
+
+                                e.setId(doc.getId());
+                                //eventList.clear();
+                                eventList3.add(e);
+                            }
+                            recyclerViewAdapter3 = new
+                                    popularAdapter(eventList3, getContext());
+                            friendList3.setAdapter(recyclerViewAdapter3);
+
+                        } else {
+                            //Log.d(TAG, "Error getting documents: ", task.getException());
+                            Toast.makeText(getContext(), "error: " + task.getException(), Toast.LENGTH_LONG).show();
+                            //progressBar.setVisibility(View.GONE);
+                        }
+                    }
+                });
+
+        db.collection("Vendors").document("services").collection("others").whereEqualTo("Sponsord", 1)
                 .addSnapshotListener(new EventListener<QuerySnapshot>() {
                     @Override
                     public void onEvent(QuerySnapshot documentSnapshots, FirebaseFirestoreException e) {
@@ -353,7 +499,50 @@ public class HomeFragment extends Fragment {
 
 
     }
+    private void getFoodItems55() {
+        db.collection("Vendors").document("services").collection("others").whereArrayContains("ShopAddresses", address)
+                .get()
+                .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
+                    @Override
+                    public void onComplete(@NonNull Task<QuerySnapshot> task) {
+                        if (task.isSuccessful()) {
+                            //List<viewItems> eventList = new ArrayList<>();
+                            //progressBar.setVisibility(View.GONE);
+                            for (DocumentSnapshot doc : task.getResult()) {
+                                Food e = doc.toObject(Food.class);
 
+                                e.setId(doc.getId());
+                                //eventList.clear();
+                                eventList5.add(e);
+                            }
+                            recyclerViewAdapter5 = new
+                                    nearmeAdapter(eventList5, getContext());
+                            friendList5.setAdapter(recyclerViewAdapter5);
+
+                        } else {
+                            //Log.d(TAG, "Error getting documents: ", task.getException());
+                            Toast.makeText(getContext(), "error: " + task.getException(), Toast.LENGTH_LONG).show();
+                            //progressBar.setVisibility(View.GONE);
+                        }
+                    }
+                });
+
+        db.collection("Vendors").document("services").collection("others").whereArrayContains("ShopAddresses", address)
+                .addSnapshotListener(new EventListener<QuerySnapshot>() {
+                    @Override
+                    public void onEvent(QuerySnapshot documentSnapshots, FirebaseFirestoreException e) {
+                        //List<viewItems> eventList = new ArrayList<>();
+                        for (DocumentChange doc : documentSnapshots.getDocumentChanges()) {
+                            doc.getDocument().toObject(Food.class);
+                            // eventList.add(ee);
+                            // recyclerViewAdapter.notifyDataSetChanged();
+                            //do something...
+                        }
+                    }
+                });
+
+
+    }
 private void getFoodItems4() {
     db.collection("Customers").document("users").collection("users").document(userId).collection("history").orderBy("Date", Query.Direction.DESCENDING)
             .get()
@@ -410,8 +599,11 @@ private void getFoodItems4() {
                                                           address = doc.getString("Lga");
                                                           state = doc.getString("Street name");
                                                           getFoodItems5();
+                                                          getFoodItems55();
                                                           getFoodItems();
                                                          // Toast.makeText(getContext(), "a: " + address + "  " + state, Toast.LENGTH_LONG).show();
+                                                      }else {
+                                                          getUsers2();
                                                       }
                                                   }
                                               }
@@ -424,6 +616,74 @@ private void getFoodItems4() {
                         Toast.makeText(getContext(), "error" + e, Toast.LENGTH_LONG).show();
                     }
                 });
+    }
+    private void getTags() {
+        users =  db.collection("Vendors").document("foodTags");
+        users.get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
+                                              @Override
+                                              public void onComplete(@NonNull Task<DocumentSnapshot> task) {
+                                                  if (task.isSuccessful()) {
+                                                      // pDialog.dismiss();
+                                                      DocumentSnapshot doc = task.getResult();
+                                                      if (doc.exists()) {
+                                                          //pDialog.dismiss();
+                                                         Double breakfast = doc.getDouble("Breakfast");
+                                                          Double lunch = doc.getDouble("Lunch");
+                                                          Double  dinner = doc.getDouble("Dinner");
+                                                          Double drinks = doc.getDouble("Drinks");
+                                                          Double pizza = doc.getDouble("Pizza");
+                                                          Double  tea = doc.getDouble("Tea");
+                                                          Double burger = doc.getDouble("Burger");
+                                                          Double shoes = doc.getDouble("Shoes");
+                                                          Double cloths = doc.getDouble("Cloths");
+                                                          Double beauty = doc.getDouble("Beauty");
+                                                          Double othersValue = doc.getDouble("Others");
+                                                          breakText.setText((int) Math.round(breakfast));
+                                                          lunchText.setText((int) Math.round(lunch));
+                                                          dinnerText.setText((int) Math.round(dinner));
+                                                          pizzaText.setText((int) Math.round(pizza));
+                                                          drinksText.setText((int) Math.round(drinks));
+                                                          shoesText.setText((int) Math.round(shoes));
+                                                          clothsText.setText((int) Math.round(cloths));
+                                                          beautyText.setText((int) Math.round(beauty));
+                                                          othersText.setText((int) Math.round(othersValue));
+
+                                                      }
+                                                  }
+                                              }
+                                          }
+        )
+                .addOnFailureListener(new OnFailureListener() {
+                    @Override
+                    public void onFailure(@NonNull Exception e) {
+                        // pDialog.dismiss();
+                        // Toast.makeText(ProfileActivity.this, "error" + e, Toast.LENGTH_LONG).show();
+                    }
+                });
+    }
+    private void getUsers2() {
+        AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(getContext());
+        alertDialogBuilder.setTitle("Account Conflicting");
+        alertDialogBuilder
+                .setCancelable(false)
+                .setIcon(R.drawable.ic_close)
+                .setMessage("Sorry, this account is already in used in another application! please kindly register into this application with a different email address")
+                .setPositiveButton("Ok",
+                        new DialogInterface.OnClickListener() {
+                            public void onClick(DialogInterface dialog, int id) {
+                                dialog.cancel();
+                                //exit app and kill the app from running
+                                FirebaseAuth.getInstance().signOut();
+                                android.os.Process.killProcess(android.os.Process.myPid());
+                                System.exit(1);
+
+
+                            }
+                        });
+
+
+        AlertDialog alertDialog = alertDialogBuilder.create();
+        alertDialog.show();
     }
 }
 

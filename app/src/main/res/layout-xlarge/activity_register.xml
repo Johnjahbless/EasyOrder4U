@@ -219,7 +219,7 @@
             android:layout_height="wrap_content"
             android:textSize="35sp"
             android:textColor="@color/textColor"
-            android:text="By tapping Register, you accept happiFoodie  "
+            android:text="By tapping Register, you accept easyOrder  "
             android:textStyle="normal"/>
         <LinearLayout
             android:layout_margin="16dp"
