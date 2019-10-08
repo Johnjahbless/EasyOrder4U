@@ -42,6 +42,7 @@ import com.google.firebase.firestore.Query;
 import com.google.firebase.firestore.QuerySnapshot;
 import com.squareup.picasso.Picasso;
 
+import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -68,6 +69,8 @@ public class HomeFragment extends Fragment {
     private String userId, address, state;
     private FirebaseUser user;
     private DocumentReference users;
+
+    DecimalFormat df = new DecimalFormat("####0");
 
     public HomeFragment() {
         // Required empty public constructor
@@ -638,15 +641,15 @@ private void getFoodItems4() {
                                                           Double cloths = doc.getDouble("Cloths");
                                                           Double beauty = doc.getDouble("Beauty");
                                                           Double othersValue = doc.getDouble("Others");
-                                                          breakText.setText((int) Math.round(breakfast));
-                                                          lunchText.setText((int) Math.round(lunch));
-                                                          dinnerText.setText((int) Math.round(dinner));
-                                                          pizzaText.setText((int) Math.round(pizza));
-                                                          drinksText.setText((int) Math.round(drinks));
-                                                          shoesText.setText((int) Math.round(shoes));
-                                                          clothsText.setText((int) Math.round(cloths));
-                                                          beautyText.setText((int) Math.round(beauty));
-                                                          othersText.setText((int) Math.round(othersValue));
+                                                          breakText.setText(df.format(breakfast));
+                                                          lunchText.setText(df.format(lunch));
+                                                          dinnerText.setText(df.format(dinner));
+                                                          pizzaText.setText(df.format(pizza));
+                                                          drinksText.setText(df.format(drinks));
+                                                          shoesText.setText(df.format(shoes));
+                                                          clothsText.setText(df.format(cloths));
+                                                          beautyText.setText(df.format(beauty));
+                                                          othersText.setText(df.format(othersValue));
 
                                                       }
                                                   }
