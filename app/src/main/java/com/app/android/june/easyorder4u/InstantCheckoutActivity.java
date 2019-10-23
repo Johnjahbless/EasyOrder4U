@@ -49,14 +49,14 @@ import java.util.Objects;
 public class InstantCheckoutActivity extends AppCompatActivity {
 TextView etUsername, etAddress, etFoodTags, etFoodName, etShopName, etLikes, etReviews, etPrice, etPieces, etTotal;
 String username, userAddress, paymentMethod = "pay on delivery", foodName, shopName,  review, foodPrice,foodPhoto, foodId, foodTags, foodDesc,
-    shopCity, shopState, locationOrder, shopAddress, shopID, userID, userId, useremail, userPhoto, orderId, orderId2, userPhone, userGender, userHome, newAddress,
-    mon, tue, wed, thu, fri, sat, sun, shopOrder, order = "YES", lga;
-Integer value = 2, valueTime;
+    shopCity, shopState, locationOrder = "m", shopAddress, shopID, userID, userId, useremail, userPhoto, orderId, orderId2, userPhone, userGender, userHome, newAddress,
+    mon, tue, wed, thu, fri, sat, sun, shopOrder, order = "YES", lga = "m", cardPayment = "No";
+Integer value = 2, valueTime, card = 0;
 Double likes, totalPrice, pieces;
 ImageView imageView;
     FirebaseFirestore db;
     DocumentReference users;
-    DecimalFormat df = new DecimalFormat("####0");
+    DecimalFormat df = new DecimalFormat("####0.00");
     AlertDialog dialog;
     FirebaseUser user;
     private ProgressDialog pDialog;
@@ -76,6 +76,8 @@ ImageView imageView;
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_instant_checkout);
         getSupportActionBar().hide();
+        df.setGroupingUsed(true);
+        df.setGroupingSize(3);
         etUsername = findViewById(R.id.username);
         etAddress = findViewById(R.id.useraddress);
         imageView = findViewById(R.id.image);
@@ -92,7 +94,7 @@ ImageView imageView;
         db = FirebaseFirestore.getInstance();
         user = FirebaseAuth.getInstance().getCurrentUser();
         userId = user.getUid();
-        getUser();
+
         //getConstants();
         Calendar calendar = Calendar.getInstance();
         Date date = calendar.getTime();
@@ -116,9 +118,9 @@ ImageView imageView;
             shopAddress = getIntent().getExtras().getString("shopAddress");
             userID = getIntent().getExtras().getString("userID");
             shopID = getIntent().getExtras().getString("shopID");
-            etTotal.setText("₦" + totalPrice);
+            etTotal.setText("₦" + df.format(totalPrice));
             etPieces.setText(pieces + " Pieces");
-            etPrice.setText("₦" + totalPrice);
+            etPrice.setText("₦" + df.format(totalPrice));
             etReviews.setText(df.format(likes) + " reviews");
             //etLikes.setText(df.format(likes));
             etShopName.setText(shopName);
@@ -133,7 +135,7 @@ ImageView imageView;
 
 
 
-
+            getUser();
         }
     }
 
@@ -247,13 +249,22 @@ ImageView imageView;
 
     public void checkout(View view) {
         if (validates()){
-            displayLoader();
-            SendToVendor();
+
+            if (value == 1) {
+                displayLoader();
+                SendToVendor();
+            }else if (value == 2){
+                Toast.makeText(this, "Sorry, service is unavailable", Toast.LENGTH_SHORT).show();
+            }
         }
 
     }
 
     private boolean validates() {
+        if (username == null) {
+            Toast.makeText(this, "Network connection failed", Toast.LENGTH_LONG).show();
+            return false;
+        }
         if (!locationOrder.contains(lga)) {
             Toast.makeText(this, "Sorry, this shop does not deliver to your location", Toast.LENGTH_SHORT).show();
             return false;
@@ -270,21 +281,13 @@ ImageView imageView;
             Toast.makeText(this, "Sorry, You can not make an order at this time", Toast.LENGTH_LONG).show();
             return false;
         }
-            if (username == null) {
-                Toast.makeText(this, "Network connection failed", Toast.LENGTH_LONG).show();
+        if (today.equals("Mon")){
+            if (mon.equals("0")){
+                Toast.makeText(this, "Sorry, this vendor does not deliver today", Toast.LENGTH_LONG).show();
                 return false;
+            }else {
+                return true;
             }
-            if (value == 2){
-                Toast.makeText(this, "Card payment is currently unavailable", Toast.LENGTH_SHORT).show();
-                return false;
-            }
-            if (today.equals("Mon")){
-                if (mon.equals("0")){
-                    Toast.makeText(this, "Sorry, this vendor does not deliver today", Toast.LENGTH_LONG).show();
-                    return false;
-                }else {
-                    return true;
-                }
         }if (today.equals("Tue")) {
             if (tue.equals("0")) {
                 Toast.makeText(this, "Sorry, this vendor does not deliver today", Toast.LENGTH_LONG).show();
@@ -331,6 +334,14 @@ ImageView imageView;
                 Toast.makeText(this, "Sorry, this vendor does not deliver today", Toast.LENGTH_LONG).show();
                 return false;
             } else {
+                return true;
+            }
+        }
+        if (value == 2){
+            if (cardPayment.equals("No")){
+                Toast.makeText(this, "Card payment is currently unavailable", Toast.LENGTH_SHORT).show();
+                return false;
+            }else {
                 return true;
             }
         }
@@ -645,6 +656,7 @@ orderId2 = documentReference.getId();
                 if (checked)
                     value = 2;
                     paymentMethod = "pay with card";
+
                 break;
         }
     }
@@ -683,6 +695,30 @@ orderId2 = documentReference.getId();
                     }
                 });
     }
+    private void getConstants() {
+        users =  db.collection("Vendors").document("Constants");
+        users.get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
+                                              @Override
+                                              public void onComplete(@NonNull Task<DocumentSnapshot> task) {
+                                                  if (task.isSuccessful()) {
+                                                      // pDialog.dismiss();
+                                                      DocumentSnapshot doc = task.getResult();
+                                                      if (doc.exists()) {
+                                                          //pDialog.dismiss();
+                                                          cardPayment = doc.getString("CardPayment");
 
+                                                      }
+                                                  }
+                                              }
+                                          }
+        )
+                .addOnFailureListener(new OnFailureListener() {
+                    @Override
+                    public void onFailure(@NonNull Exception e) {
+                        // pDialog.dismiss();
+                       // Toast.makeText(PromoteActivity.this, "error" + e, Toast.LENGTH_LONG).show();
+                    }
+                });
+    }
 
 }

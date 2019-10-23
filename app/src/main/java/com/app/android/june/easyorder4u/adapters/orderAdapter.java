@@ -19,12 +19,14 @@ import com.app.android.june.easyorder4u.ViewOrderActivity;
 import com.app.android.june.easyorder4u.helpers.Orders;
 import com.squareup.picasso.Picasso;
 
+import java.text.DecimalFormat;
 import java.util.List;
 
 public class orderAdapter extends
         RecyclerView.Adapter<orderAdapter.ViewHolder> {
     private List<Orders> eventsList;
     private Context context;
+    DecimalFormat df = new DecimalFormat("####0.00");
     public orderAdapter(List<Orders> list, Context ctx ) {
         eventsList = list;
         context = ctx;
@@ -44,6 +46,8 @@ public class orderAdapter extends
 
         ViewHolder viewHolder =
                 new ViewHolder(view);
+        df.setGroupingUsed(true);
+        df.setGroupingSize(3);
         return viewHolder;
     }
 
@@ -60,9 +64,9 @@ public class orderAdapter extends
         Integer totalPrice = event.getTotalPrice();
 
         String pieces2 = String.valueOf(pieces);
-        String price2 = String.valueOf(totalPrice);
+        //String price2 = String.valueOf(totalPrice);
         holder.pieces.setText(pieces2 + " Pieces    ");
-        holder.price.setText("₦" + price2);
+        holder.price.setText("₦" + df.format(totalPrice));
        // holder.pieces.setText(event.getFoodPieces());
        // holder.price.setText(event.getTotalPrice());
 

@@ -38,7 +38,7 @@ public class OrdersActivity extends AppCompatActivity {
     FirebaseUser user;
     String userId;
     CountDownTimer countDownTimer;
-    private int counter = 10;
+    private int counter = 100;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -109,12 +109,12 @@ public class OrdersActivity extends AppCompatActivity {
     }
     public void startTimer() {
 
-        countDownTimer = new CountDownTimer(10000, 1000) {
+        countDownTimer = new CountDownTimer(100000, 1000) {
             public void onTick(long millisUntilFinished) {
                 counter--;
             }
             public void onFinish() {
-                counter = 10;
+                counter = 100;
                 finish();
                 overridePendingTransition(0, 0);
                 startActivity(getIntent());

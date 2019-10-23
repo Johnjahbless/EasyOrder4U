@@ -111,6 +111,8 @@ public class HomeFragment extends Fragment {
         CardView pizzaCard = rootView.findViewById(R.id.pizza);
         CardView clothsCard = rootView.findViewById(R.id.clothsCard);
         CardView shoesCard = rootView.findViewById(R.id.shoesCard);
+        CardView fashionCard = rootView.findViewById(R.id.fashion);
+        CardView electronicCard = rootView.findViewById(R.id.electronics);
         db = FirebaseFirestore.getInstance();
         user = FirebaseAuth.getInstance().getCurrentUser();
         userId = user.getUid();
@@ -222,6 +224,23 @@ public class HomeFragment extends Fragment {
             }
         });
         shoesCard.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getContext(), ViewAllActivity.class);
+                intent.putExtra("others", "others");
+                startActivity(intent);
+            }
+        });
+
+        fashionCard.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getContext(), ViewAllActivity.class);
+                intent.putExtra("others", "others");
+                startActivity(intent);
+            }
+        });
+        electronicCard.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(getContext(), ViewAllActivity.class);
@@ -641,15 +660,15 @@ private void getFoodItems4() {
                                                           Double cloths = doc.getDouble("Cloths");
                                                           Double beauty = doc.getDouble("Beauty");
                                                           Double othersValue = doc.getDouble("Others");
-                                                          breakText.setText(df.format(breakfast));
-                                                          lunchText.setText(df.format(lunch));
-                                                          dinnerText.setText(df.format(dinner));
-                                                          pizzaText.setText(df.format(pizza));
-                                                          drinksText.setText(df.format(drinks));
-                                                          shoesText.setText(df.format(shoes));
-                                                          clothsText.setText(df.format(cloths));
-                                                          beautyText.setText(df.format(beauty));
-                                                          othersText.setText(df.format(othersValue));
+                                                          breakText.setText(df.format(breakfast) + " Items");
+                                                          lunchText.setText(df.format(lunch) + " Items");
+                                                          dinnerText.setText(df.format(dinner) + " Items");
+                                                          pizzaText.setText(df.format(pizza) + " Items");
+                                                          drinksText.setText(df.format(drinks) + " Items");
+                                                          shoesText.setText(df.format(shoes) + " Items");
+                                                          clothsText.setText(df.format(cloths) + " Items");
+                                                          beautyText.setText(df.format(beauty) + " Items");
+                                                          othersText.setText(df.format(othersValue) + " Items");
 
                                                       }
                                                   }

@@ -36,7 +36,7 @@ public class popularAdapter extends
         RecyclerView.Adapter<popularAdapter.ViewHolder> {
     private List<Food> eventsList;
     private Context context;
-    DecimalFormat df = new DecimalFormat("####0.0");
+    DecimalFormat df = new DecimalFormat("####0.00");
     FirebaseUser user;
     FirebaseFirestore db;
     DocumentReference users;
@@ -60,6 +60,8 @@ public class popularAdapter extends
 
         ViewHolder viewHolder =
                 new ViewHolder(view);
+        df.setGroupingUsed(true);
+        df.setGroupingSize(3);
         return viewHolder;
     }
 

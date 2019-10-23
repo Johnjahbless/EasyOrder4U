@@ -59,7 +59,7 @@
 <TextView
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:text="Do you wish to deliver food for a food vendor and earn extra income , follow this 3 simple steps"
+    android:text="Do you wish to deliver sale item's for shop owners or food vendors and earn extra income, follow this 3 simple steps"
     android:layout_margin="@dimen/activity_horizontal_margin"
     android:textColor="@color/textColor"/>
 
@@ -67,7 +67,7 @@
     android:layout_marginStart="@dimen/activity_horizontal_margin"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
-    android:text="1. Select a food vendor"
+    android:text="1. Select a shop"
     android:textColor="@color/textColor"/>
 
         <TextView
@@ -89,7 +89,7 @@
             android:onClick="letStart"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Lets Start"
+            android:text="Start"
             android:layout_margin="@dimen/activity_horizontal_margin"
             android:background="@drawable/button"
             android:textColor="#fff"

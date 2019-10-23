@@ -43,7 +43,7 @@ public class CartFragment extends Fragment {
     FirebaseFirestore db;
     DocumentReference users;
     FirebaseUser user;
-    DecimalFormat df = new DecimalFormat("####0");
+    DecimalFormat df = new DecimalFormat("####0.00");
     ImageView imageView;
     Double totalPrice = 0.00, pieces, likes;
     RelativeLayout layout;
@@ -57,6 +57,8 @@ public class CartFragment extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         rootView = inflater.inflate(R.layout.fragment_cart, container, false);
+        df.setGroupingUsed(true);
+        df.setGroupingSize(3);
         checkout = rootView.findViewById(R.id.checkout);
         imageView = rootView.findViewById(R.id.image);
         etFoodTags = rootView.findViewById(R.id.foodTags);
@@ -122,7 +124,7 @@ public class CartFragment extends Fragment {
                                                           shopID = doc.getString("shopID");
                                                           pieces = doc.getDouble("foodPieces");
                                                           layout.setVisibility(View.VISIBLE);
-                                                          etTotal.setText("₦" + totalPrice);
+                                                          etTotal.setText("₦" + df.format(totalPrice));
                                                           etPieces.setText(pieces + " Pieces");
                                                           etReviews.setText(likes + " reviews");
                                                           etLikes.setText(df.format(likes));

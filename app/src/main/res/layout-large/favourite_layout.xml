@@ -33,6 +33,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content">
             <TextView
+                android:ellipsize="end"
                 android:id="@+id/foodTags"
                 android:layout_marginStart="5dp"
                 android:maxLines="1"
@@ -40,6 +41,7 @@
                 android:layout_height="wrap_content"
                 android:text="Lunch, Dinner"/>
             <TextView
+                android:ellipsize="end"
                 android:id="@+id/foodName"
                 android:layout_marginStart="5dp"
                 android:maxLines="1"
@@ -50,6 +52,7 @@
                 android:layout_height="wrap_content"
                 android:text="Fried rice" />
             <TextView
+                android:ellipsize="end"
                 android:id="@+id/shopName"
                 android:layout_marginTop="5dp"
                 android:layout_marginStart="5dp"
@@ -78,6 +81,7 @@
                     android:layout_height="wrap_content"
                     android:text="4.0 "/>
                 <TextView
+                    android:ellipsize="end"
                     android:id="@+id/reviews"
                     android:maxLines="1"
                     android:layout_width="wrap_content"
@@ -90,6 +94,7 @@
                 android:layout_height="wrap_content">
 
                 <TextView
+                    android:ellipsize="end"
                     android:fontFamily="@font/opensans_semibold"
                     android:textColor="@color/colorPrimary"
                     android:maxLines="1"

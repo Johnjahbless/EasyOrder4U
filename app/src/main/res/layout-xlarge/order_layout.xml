@@ -34,6 +34,7 @@
                 android:layout_height="wrap_content"
                 android:layout_toEndOf="@id/imageView">
                 <TextView
+                    android:ellipsize="end"
                     android:layout_marginBottom="@dimen/activity_horizontal_margin"
                     android:id="@+id/foodname"
                     android:layout_marginTop="10dp"
@@ -45,6 +46,7 @@
                     android:fontFamily="@font/opensans_semibold"
                     android:textSize="35sp"/>
                 <TextView
+                    android:ellipsize="end"
                     android:layout_marginBottom="@dimen/activity_horizontal_margin"
                         android:layout_marginStart="1dp"
                     android:id="@+id/shopname"
@@ -58,6 +60,7 @@
                     android:textSize="35sp"/>
 
                     <TextView
+                        android:ellipsize="end"
                         android:layout_marginBottom="@dimen/activity_horizontal_margin"
                         android:textSize="30sp"
                         android:maxLines="1"
@@ -73,12 +76,14 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content">
                     <TextView
+                        android:ellipsize="end"
                         android:textSize="35sp"
                         android:id="@+id/pieces"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="1 Pieces"/>
                     <TextView
+                        android:ellipsize="end"
                         android:textSize="35sp"
                         android:layout_marginTop="5dp"
                         android:layout_toEndOf="@+id/pieces"

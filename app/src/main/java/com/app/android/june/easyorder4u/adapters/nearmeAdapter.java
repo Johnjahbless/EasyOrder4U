@@ -35,7 +35,7 @@ public class nearmeAdapter extends
         RecyclerView.Adapter<nearmeAdapter.ViewHolder> {
     private List<Food> eventsList;
     private Context context;
-    DecimalFormat df = new DecimalFormat("####0.0");
+    DecimalFormat df = new DecimalFormat("####0.00");
     FirebaseUser user;
     FirebaseFirestore db;
     DocumentReference users;
@@ -59,6 +59,8 @@ public class nearmeAdapter extends
 
         ViewHolder viewHolder =
                 new ViewHolder(view);
+        df.setGroupingUsed(true);
+        df.setGroupingSize(3);
         return viewHolder;
     }
 

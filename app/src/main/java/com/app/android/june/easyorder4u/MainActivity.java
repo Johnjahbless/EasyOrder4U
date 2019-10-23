@@ -155,6 +155,7 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+        Toast.makeText(this, "Fetching items, please wait...", Toast.LENGTH_LONG).show();
     }
      /*   mViewPager.addOnPageChangeListener(new ViewPager.OnPageChangeListener() {
             @Override

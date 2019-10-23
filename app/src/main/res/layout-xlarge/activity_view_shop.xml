@@ -85,7 +85,7 @@
         android:textColor="@color/textColor"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Food Items Found"/>
+        android:text="Items Found"/>
     <LinearLayout
         android:layout_below="@+id/text"
         android:orientation="horizontal"

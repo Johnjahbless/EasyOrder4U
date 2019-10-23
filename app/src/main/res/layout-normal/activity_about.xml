@@ -24,7 +24,7 @@
                 android:textColor="@color/textColor"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="About happiFoodie" />
+                android:text="About easyOrder" />
             <ImageView
                 android:layout_marginTop="10dp"
                 android:id="@+id/cancel"

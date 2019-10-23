@@ -36,7 +36,7 @@ public class favouriteAdapter extends
         RecyclerView.Adapter<favouriteAdapter.ViewHolder> {
     private List<Food> eventsList;
     private Context context;
-    DecimalFormat df = new DecimalFormat("####0.0");
+    DecimalFormat df = new DecimalFormat("####0.00");
     FirebaseUser user;
     FirebaseFirestore db;
     DocumentReference users;
@@ -60,6 +60,8 @@ public class favouriteAdapter extends
 
         ViewHolder viewHolder =
                 new ViewHolder(view);
+        df.setGroupingUsed(true);
+        df.setGroupingSize(3);
         return viewHolder;
     }
 
@@ -74,7 +76,9 @@ public class favouriteAdapter extends
         Double likes = event.getProductLikes();
         holder.num.setText(df.format(likes / 10));
         holder.reviews.setText("   (" + likes + " reviews)");
-        holder.foodprice.setText("₦" + event.getProductPrice());
+        String food_price = event.getProductPrice();
+        Double myPrice = Double.parseDouble(food_price);
+        holder.foodprice.setText("₦" + df.format(myPrice));
         // holder.price.setText("₦" + event.getProductPrice());
         //String image = event.getPhoto();
        /* RequestBuilder requestBuilder = requestManager.load(event.getFoodPic());

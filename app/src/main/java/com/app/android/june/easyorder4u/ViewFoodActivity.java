@@ -57,11 +57,12 @@ public class ViewFoodActivity extends AppCompatActivity {
     CheckBox favourite;
     RatingBar ratingBar;
     TextView name, num, review, price, desc, totalText, textPieces;
-    DecimalFormat df = new DecimalFormat("####0");
+    DecimalFormat df = new DecimalFormat("####0.00");
+    DecimalFormat du = new DecimalFormat("####0");
     FirebaseUser user;
     FirebaseFirestore db;
     DocumentReference users;
-    Double likes = 0.00, totalPrice = 0.00, mainPrice = 0.00, total = 1.00;
+    Double likes = 0.00, totalPrice = 0.00, mainPrice = 0.00, total = 1.00, myPrice = 0.00;
     EditText etComments;
     RecyclerView friendList;
     CommentsAdapter recyclerViewAdapter;
@@ -71,11 +72,13 @@ public class ViewFoodActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_view_food);
         getSupportActionBar().hide();
+        df.setGroupingUsed(true);
+        df.setGroupingSize(3);
         transparentStatusAndNavigation();
-
         if (getIntent().hasExtra("foodname")) {
             foodName = Objects.requireNonNull(getIntent().getExtras()).getString("foodname");
             foodPrice = getIntent().getExtras().getString("foodprice");
+            myPrice = Double.parseDouble(foodPrice);
             foodPhoto = getIntent().getExtras().getString("foodphoto");
             likes = getIntent().getExtras().getDouble("foodlikes");
             foodId = getIntent().getExtras().getString("foodid");
@@ -106,7 +109,7 @@ public class ViewFoodActivity extends AppCompatActivity {
 
 
         name.setText(foodName);
-        price.setText("₦" + foodPrice);
+        price.setText("₦" + df.format(myPrice));
         String trim = foodPrice.trim();
         totalPrice = Double.parseDouble(trim);
         mainPrice = Double.parseDouble(trim);
@@ -536,32 +539,32 @@ public class ViewFoodActivity extends AppCompatActivity {
     public void Subtract(View view) {
         if (total == 1 ) {
             totalPrice = mainPrice * total;
-            price.setText("₦" + totalPrice);
-            totalText.setText(df.format(total));
-            textPieces.setText(total+ " Pieces");
+            price.setText("₦" + df.format(totalPrice));
+            totalText.setText(du.format(total));
+            textPieces.setText(du.format(total)+ " Pieces");
             Toast.makeText(this, "Minimum value reached", Toast.LENGTH_SHORT).show();
         }else {
             total -= 1;
             totalPrice -= mainPrice;
-            price.setText("₦" + totalPrice);
-            totalText.setText(df.format(total));
-            textPieces.setText(total+ " Pieces");
+            price.setText("₦" + df.format(totalPrice));
+            totalText.setText(du.format(total));
+            textPieces.setText(du.format(total)+ " Pieces");
         }
     }
 
     public void Add(View view) {
         if (total == 10 ) {
             totalPrice = mainPrice * total;
-            price.setText("₦" + totalPrice);
-            totalText.setText(df.format(total));
-            textPieces.setText(total+ " Pieces");
+            price.setText("₦" + df.format(totalPrice));
+            totalText.setText(du.format(total));
+            textPieces.setText(du.format(total)+ " Pieces");
             Toast.makeText(this, "Maximum value reached", Toast.LENGTH_SHORT).show();
         }else {
             total += 1;
             totalPrice = mainPrice * total;
-            price.setText("₦" + totalPrice);
-            totalText.setText(df.format(total));
-            textPieces.setText(total+ " Pieces");
+            price.setText("₦" + df.format(totalPrice));
+            totalText.setText(du.format(total));
+            textPieces.setText(du.format(total)+ " Pieces");
         }
     }
 
