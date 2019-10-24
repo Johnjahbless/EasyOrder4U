@@ -52,7 +52,7 @@ import java.util.List;
 public class HomeFragment extends Fragment {
 
     private View rootView;
-    private TextView dishes, popular, sponsord, recent, nearme, breakText, lunchText, dinnerText, drinksText, pizzaText, shoesText, clothsText, beautyText, othersText;
+    private TextView dishes, popular, sponsord, recent, nearme, breakText, lunchText, dinnerText, drinksText, pizzaText, shoesText, clothsText, beautyText, electronicsText, fashionsText, othersText;
     private ImageView imageView;
     private CardView breakfast, lunch, dinner;
     private FirebaseFirestore db;
@@ -105,6 +105,8 @@ public class HomeFragment extends Fragment {
         shoesText = rootView.findViewById(R.id.shoes);
         clothsText = rootView.findViewById(R.id.cloths);
         beautyText = rootView.findViewById(R.id.beauty);
+        electronicsText = rootView.findViewById(R.id.electronicText);
+        fashionsText = rootView.findViewById(R.id.fashionText);
         othersText = rootView.findViewById(R.id.others);
         CardView othersCard = rootView.findViewById(R.id.othersCard);
         CardView beautyCard = rootView.findViewById(R.id.beautyCard);
@@ -659,6 +661,8 @@ private void getFoodItems4() {
                                                           Double shoes = doc.getDouble("Shoes");
                                                           Double cloths = doc.getDouble("Cloths");
                                                           Double beauty = doc.getDouble("Beauty");
+                                                          Double elec = doc.getDouble("Electronics");
+                                                          Double fashi = doc.getDouble("Fashion");
                                                           Double othersValue = doc.getDouble("Others");
                                                           breakText.setText(df.format(breakfast) + " Items");
                                                           lunchText.setText(df.format(lunch) + " Items");
@@ -668,6 +672,8 @@ private void getFoodItems4() {
                                                           shoesText.setText(df.format(shoes) + " Items");
                                                           clothsText.setText(df.format(cloths) + " Items");
                                                           beautyText.setText(df.format(beauty) + " Items");
+                                                          electronicsText.setText(df.format(elec) + " Items");
+                                                          fashionsText.setText(df.format(fashi) + " Items");
                                                           othersText.setText(df.format(othersValue) + " Items");
 
                                                       }

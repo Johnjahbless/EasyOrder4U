@@ -56,13 +56,13 @@ public class MenuActivity extends AppCompatActivity {
     }
 
     public void privacy(View view) {
-        String url = "https://privacy-policys.firebaseapp.com/";
+        String url = "https://easyorder4u.com/privacypolicy.html";
         Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse(url));
         startActivity(intent);
     }
 
     public void terms(View view) {
-        String url = "https://privacy-policys.firebaseapp.com/";
+        String url = "https://easyorder4u.com/termsofservice.html";
         Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse(url));
         startActivity(intent);
     }
