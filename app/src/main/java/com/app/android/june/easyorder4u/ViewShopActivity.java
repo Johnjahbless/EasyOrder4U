@@ -78,6 +78,7 @@ public class ViewShopActivity extends AppCompatActivity {
 getShopDetails();
 
         getFoodItems();
+        getFoodItems2();
     }
 
     private void getShopDetails() {
@@ -152,6 +153,48 @@ getShopDetails();
                 });
 
         db.collection("Vendors").document("services").collection("services").whereEqualTo("ShopId", shopId)
+                .addSnapshotListener(new EventListener<QuerySnapshot>() {
+                    @Override
+                    public void onEvent(QuerySnapshot documentSnapshots, FirebaseFirestoreException e) {
+                        //List<viewItems> eventList = new ArrayList<>();
+                        for (DocumentChange doc : documentSnapshots.getDocumentChanges()) {
+                            doc.getDocument().toObject(Food.class);
+                            // eventList.add(ee);
+                            // recyclerViewAdapter.notifyDataSetChanged();
+                            //do something...
+                        }
+                    }
+                });
+    }
+    private void getFoodItems2() {
+        db.collection("Vendors").document("services").collection("others").whereEqualTo("ShopId", shopId)
+                .get()
+                .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
+                    @Override
+                    public void onComplete(@NonNull Task<QuerySnapshot> task) {
+                        if (task.isSuccessful()) {
+                            //List<viewItems> eventList = new ArrayList<>();
+                            progressBar.setVisibility(View.GONE);
+                            for (DocumentSnapshot doc : task.getResult()) {
+                                Food e = doc.toObject(Food.class);
+
+                                e.setId(doc.getId());
+                                //eventList.clear();
+                                eventList.add(e);
+                            }
+                            recyclerViewAdapter = new
+                                    foodieAdapter(eventList, ViewShopActivity.this);
+                            friendList.setAdapter(recyclerViewAdapter);
+
+                        } else {
+                            //Log.d(TAG, "Error getting documents: ", task.getException());
+                            Toast.makeText(ViewShopActivity.this, "error: " + task.getException(), Toast.LENGTH_LONG).show();
+                            progressBar.setVisibility(View.GONE);
+                        }
+                    }
+                });
+
+        db.collection("Vendors").document("services").collection("others").whereEqualTo("ShopId", shopId)
                 .addSnapshotListener(new EventListener<QuerySnapshot>() {
                     @Override
                     public void onEvent(QuerySnapshot documentSnapshots, FirebaseFirestoreException e) {

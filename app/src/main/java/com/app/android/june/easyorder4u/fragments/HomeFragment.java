@@ -66,7 +66,7 @@ public class HomeFragment extends Fragment {
     private List<Food> eventList4;
     private List<Food> eventList5;
     private ProgressBar progressBar;
-    private String userId, address, state;
+    private String userId = "mmjj", address = "jnii", state = "niger";
     private FirebaseUser user;
     private DocumentReference users;
 

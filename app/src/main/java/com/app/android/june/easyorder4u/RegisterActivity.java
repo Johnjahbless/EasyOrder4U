@@ -126,7 +126,7 @@ public class RegisterActivity extends AppCompatActivity {
         lga = etLga.getText().toString().toLowerCase();
         state = etState.getText().toString().toLowerCase();
         if (validateInputs()) {
-            RegisterUser();
+            upload_imageTo_storage();
 
         }
     }
@@ -231,8 +231,8 @@ public class RegisterActivity extends AppCompatActivity {
                                 FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
 
                                 userId = user.getUid();
-                                pDialog.dismiss();
-                                upload_imageTo_storage();
+                                registerUser(name, image, status, thumb_image);
+                                writeNewUser();
 
                                 //sendPost(fullName, email, gender, phoneNo, password, photo,userId);
                                 //finish();
@@ -250,13 +250,13 @@ public class RegisterActivity extends AppCompatActivity {
 
     }
     public void privacy(View view) {
-        String url = "https://privacy-policys.firebaseapp.com/";
+        String url = "https://easyorder4u.com/privacypolicy.html";
         Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse(url));
         startActivity(intent);
     }
 
     public void terms(View view) {
-        String url = "https://privacy-policys.firebaseapp.com/";
+        String url = "https://easyorder4u.com/termsofservice.html";
         Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse(url));
         startActivity(intent);
     }
@@ -352,15 +352,29 @@ public class RegisterActivity extends AppCompatActivity {
         pDialog.show();
 
     }
+    private String generateReference() {
+        String keys = "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
+                + "0123456789"
+                + "abcdefghijklmnopqrstuvxyz";
+
+        StringBuilder sb = new StringBuilder(15);
+
+        for (int i = 0; i < 15; i++) {
+            int index = (int)(keys.length() * Math.random());
+            sb.append(keys.charAt(index));
+        }
+
+        return sb.toString();
+    }
     private void upload_imageTo_storage() {
         if (filePath != null) {
-
+            String customRef = generateReference();
             final ProgressDialog progressDialog = new ProgressDialog(this);
             progressDialog.setTitle("Uploading...");
             progressDialog.setCancelable(false);
             progressDialog.show();
 
-            final StorageReference ref = storageReference.child("profile/" + userId);
+            final StorageReference ref = storageReference.child("profile/" + customRef);
             UploadTask uploadTask = ref.putFile(filePath);
             Task<Uri> urlTask = uploadTask.continueWithTask(new Continuation<UploadTask.TaskSnapshot, Task<Uri>>() {
                 @Override
@@ -381,8 +395,7 @@ public class RegisterActivity extends AppCompatActivity {
                         status = "Approved";
                         progressDialog.dismiss();
                         Toast.makeText(RegisterActivity.this, "Starting registration, please wait...", Toast.LENGTH_LONG).show();
-                        registerUser(name, image, status, thumb_image);
-                        writeNewUser();
+                        RegisterUser();
 
                     }
                 }
@@ -404,8 +417,7 @@ public class RegisterActivity extends AppCompatActivity {
                 }
             });
         }else{
-            registerUser(name, image, status, thumb_image);
-            writeNewUser();
+            RegisterUser();
         }
     }
 
