@@ -62,7 +62,7 @@ ImageView imageView;
     private ProgressDialog pDialog;
     final private String FCM_API = "https://fcm.googleapis.com/fcm/send";
     final private String serverKey = "key=" +
-            "AAAAqsA5p9A:APA91bGjR9RTuFz-IdQcMuWJ4ClTNwYCUOteV_yhb3fpqtTxjeGP61_zLv1KTY_yWWIqMvVVIRa9wXY1RxzGvOAKKoA0Cjs_G8MNzH0Y06iq8wbaqqGO0Q1YhcU2cd0gNSoDu4JPoPZq";
+            "your api key here";
     final private String contentType = "application/json";
     final String TAG = "NOTIFICATION TAG";
     private static final String SUBSCRIBE_TO = "userABC";
